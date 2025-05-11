@@ -8,6 +8,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
+import { TeamModule } from './team/team.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -44,6 +45,7 @@ const typeOrmModuleOptions = {
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     AuthModule,
     UserModule,
+    TeamModule,
   ],
   controllers: [],
   providers: [],
