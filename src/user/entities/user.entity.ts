@@ -5,7 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Role } from './types/userRole.type';
+import { Role } from '../types/userRole.type';
 
 @Index('email', ['email'], { unique: true })
 @Entity({
