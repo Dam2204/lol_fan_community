@@ -1,3 +1,4 @@
+import { SupportMessage } from 'src/support-message/entities/support-message.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
@@ -12,4 +13,7 @@ export class Team {
 
   @Column({ type: 'varchar', nullable: false })
   description: string;
+
+  @OneToMany(() => SupportMessage, (supportMessage) => supportMessage.team)
+  supportMessages: SupportMessage[];
 }

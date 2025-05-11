@@ -1,3 +1,4 @@
+import { SupportMessage } from 'src/support-message/entities/support-message.entity';
 import {
   Column,
   Entity,
@@ -5,6 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
 import { Role } from '../types/userRole.type';
 
 @Index('email', ['email'], { unique: true })
@@ -23,4 +25,7 @@ export class User {
 
   @Column({ type: 'enum', enum: Role, default: Role.User })
   role: Role;
+
+  @OneToMany(() => SupportMessage, (supportMessage) => supportMessage.user)
+  supportMessages: SupportMessage[];
 }

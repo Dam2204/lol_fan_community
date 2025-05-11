@@ -6,10 +6,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { AuthModule } from './auth/auth.module';
-import { User } from './user/entities/user.entity';
-import { UserModule } from './user/user.module';
+import { SupportMessage } from './support-message/entities/support-message.entity';
+import { SupportMessageModule } from './support-message/support-message.module';
 import { Team } from './team/entities/team.entity';
 import { TeamModule } from './team/team.module';
+import { User } from './user/entities/user.entity';
+import { UserModule } from './user/user.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (
@@ -22,7 +24,7 @@ const typeOrmModuleOptions = {
     host: configService.get('DB_HOST'),
     port: configService.get('DB_PORT'),
     database: configService.get('DB_NAME'),
-    entities: [User, Team], // 엔티티는 반드시 여기에 명시!
+    entities: [User, Team, SupportMessage],
     synchronize: configService.get('DB_SYNC'),
     logging: true,
   }),
@@ -47,6 +49,7 @@ const typeOrmModuleOptions = {
     AuthModule,
     UserModule,
     TeamModule,
+    SupportMessageModule,
   ],
   controllers: [],
   providers: [],
